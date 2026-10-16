@@ -8,7 +8,6 @@
 <table class="heading">
 <tr class="heading-text decor">
 <td class="title">&nbsp;<br><strong class="title">logica_login</strong></td>
-<<<<<<< HEAD
 <td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cdatas%5Conedrive%5Cescritorio%5Ccs2%20backup%5Cua%20-%20pdfs%5Csogue%5Clogica_login.py">c:\users\datas\onedrive\escritorio\cs2 backup\ua - pdfs\sogue\logica_login.py</a></td></tr></table>
     <p><span class="code">lógica&nbsp;del&nbsp;login&nbsp;de&nbsp;sogueapp:&nbsp;usuarios,&nbsp;roles,&nbsp;contraseñas&nbsp;y&nbsp;base&nbsp;de&nbsp;datos.<br>
 &nbsp;<br>
@@ -16,10 +15,6 @@ este&nbsp;módulo&nbsp;no&nbsp;usa&nbsp;la&nbsp;interfaz&nbsp;gráfica,&nbsp;asi
 (ver&nbsp;test_login.py).&nbsp;la&nbsp;interfaz&nbsp;(interfaz_login.py)&nbsp;llama&nbsp;a&nbsp;estas&nbsp;funciones.<br>
 &nbsp;<br>
 roles&nbsp;validos:&nbsp;admin,&nbsp;completo,&nbsp;presupuesto,&nbsp;ahorro.</span></p>
-=======
-<td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cdatas%5Conedrive%5Cdocumentos%5Cborrador_sogue%5Clogica_login.py">c:\users\datas\onedrive\documentos\borrador_sogue\logica_login.py</a></td></tr></table>
-    <p></p>
->>>>>>> 7bd8bf5674ae67b1e45373b0b5fea840cc61ce72
 <p>
 <table class="section">
 <tr class="decor pkg-content-decor heading-text">
@@ -27,7 +22,6 @@ roles&nbsp;validos:&nbsp;admin,&nbsp;completo,&nbsp;presupuesto,&nbsp;ahorro.</s
     
 <tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
 <td class="singlecolumn"><table><tr><td class="multicolumn"><a href="hashlib.html">hashlib</a><br>
-<<<<<<< HEAD
 <a href="hmac.html">hmac</a><br>
 <a href="io.html">io</a><br>
 </td><td class="multicolumn"><a href="math.html">math</a><br>
@@ -36,17 +30,12 @@ roles&nbsp;validos:&nbsp;admin,&nbsp;completo,&nbsp;presupuesto,&nbsp;ahorro.</s
 </td><td class="multicolumn"><a href="secrets.html">secrets</a><br>
 <a href="sqlite3.html">sqlite3</a><br>
 <a href="sys.html">sys</a><br>
-=======
-</td><td class="multicolumn"><a href="re.html">re</a><br>
-</td><td class="multicolumn"><a href="sqlite3.html">sqlite3</a><br>
->>>>>>> 7bd8bf5674ae67b1e45373b0b5fea840cc61ce72
 </td><td class="multicolumn"></td></tr></table></td></tr></table><p>
 <table class="section">
 <tr class="decor functions-decor heading-text">
 <td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
     
 <tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
-<<<<<<< HEAD
 <td class="singlecolumn"><dl><dt><a name="-cambiar_clave"><strong>cambiar_clave</strong></a>(usuario, nueva_clave)</dt><dd><span class="code">cambia&nbsp;la&nbsp;contraseña&nbsp;si&nbsp;cumple&nbsp;las&nbsp;reglas&nbsp;y&nbsp;el&nbsp;usuario&nbsp;existe.<br>
 &nbsp;<br>
 no&nbsp;comprueba&nbsp;la&nbsp;identidad:&nbsp;antes&nbsp;hay&nbsp;que&nbsp;llamar&nbsp;a&nbsp;verificar_respuesta_secreta.</span></dd></dl>
@@ -90,31 +79,12 @@ devuelve&nbsp;true&nbsp;si&nbsp;coinciden.</span></dd></dl>
  <dl><dt><a name="-verificar_usuario"><strong>verificar_usuario</strong></a>(usuario, clave)</dt><dd><span class="code">true&nbsp;si&nbsp;el&nbsp;usuario&nbsp;existe&nbsp;y&nbsp;la&nbsp;contraseña&nbsp;es&nbsp;correcta.<br>
 &nbsp;<br>
 si&nbsp;la&nbsp;clave&nbsp;estaba&nbsp;guardada&nbsp;con&nbsp;el&nbsp;formato&nbsp;viejo,&nbsp;la&nbsp;actualiza&nbsp;al&nbsp;nuevo.</span></dd></dl>
-=======
-<td class="singlecolumn"><dl><dt><a name="-cambiar_clave"><strong>cambiar_clave</strong></a>(nombre, nueva_clave)</dt><dd><span class="code">Actualiza&nbsp;la&nbsp;contraseña&nbsp;de&nbsp;un&nbsp;usuario&nbsp;(usar&nbsp;solo&nbsp;después&nbsp;de&nbsp;verificar<br>
-la&nbsp;respuesta&nbsp;secreta).&nbsp;Retorna&nbsp;True&nbsp;si&nbsp;se&nbsp;pudo&nbsp;cambiar.</span></dd></dl>
- <dl><dt><a name="-clave_es_segura"><strong>clave_es_segura</strong></a>(clave)</dt><dd><span class="code">Revisa&nbsp;que&nbsp;la&nbsp;contraseña&nbsp;cumpla&nbsp;un&nbsp;mínimo&nbsp;de&nbsp;seguridad.<br>
-Retorna&nbsp;(True,&nbsp;"")&nbsp;si&nbsp;está&nbsp;bien,&nbsp;o&nbsp;(False,&nbsp;"motivo")&nbsp;si&nbsp;no&nbsp;cumple.</span></dd></dl>
- <dl><dt><a name="-conectar"><strong>conectar</strong></a>()</dt><dd><span class="code">Función&nbsp;centralizada&nbsp;para&nbsp;conectarnos&nbsp;a&nbsp;la&nbsp;bd,&nbsp;así&nbsp;todas&nbsp;las&nbsp;funciones<br>
-usan&nbsp;el&nbsp;mismo&nbsp;timeout&nbsp;sin&nbsp;repetir&nbsp;el&nbsp;parámetro&nbsp;en&nbsp;cada&nbsp;una.</span></dd></dl>
- <dl><dt><a name="-crear_usuario"><strong>crear_usuario</strong></a>(nombre, clave, pregunta, respuesta)</dt><dd><span class="code">Crea&nbsp;un&nbsp;nuevo&nbsp;usuario&nbsp;junto&nbsp;con&nbsp;su&nbsp;pregunta&nbsp;secreta&nbsp;(para&nbsp;poder<br>
-recuperar&nbsp;la&nbsp;clave&nbsp;después).&nbsp;Retorna&nbsp;True&nbsp;si&nbsp;fue&nbsp;exitoso&nbsp;o&nbsp;False&nbsp;si<br>
-falló&nbsp;(usuario&nbsp;ya&nbsp;existe,&nbsp;datos&nbsp;vacíos,&nbsp;o&nbsp;clave&nbsp;insegura).</span></dd></dl>
- <dl><dt><a name="-hash_texto"><strong>hash_texto</strong></a>(texto)</dt><dd><span class="code">Convierte&nbsp;un&nbsp;texto&nbsp;(contraseña&nbsp;o&nbsp;respuesta&nbsp;secreta)&nbsp;a&nbsp;hash&nbsp;SHA256.</span></dd></dl>
- <dl><dt><a name="-inicializar_db"><strong>inicializar_db</strong></a>()</dt><dd><span class="code">Crea&nbsp;la&nbsp;tabla&nbsp;de&nbsp;usuarios&nbsp;si&nbsp;no&nbsp;existe,&nbsp;y&nbsp;agrega&nbsp;las&nbsp;columnas&nbsp;nuevas<br>
-si&nbsp;venimos&nbsp;de&nbsp;una&nbsp;versión&nbsp;anterior&nbsp;de&nbsp;la&nbsp;base&nbsp;de&nbsp;datos&nbsp;(migración&nbsp;simple).</span></dd></dl>
- <dl><dt><a name="-obtener_pregunta_secreta"><strong>obtener_pregunta_secreta</strong></a>(nombre)</dt><dd><span class="code">Devuelve&nbsp;la&nbsp;pregunta&nbsp;secreta&nbsp;de&nbsp;un&nbsp;usuario,&nbsp;o&nbsp;None&nbsp;si&nbsp;no&nbsp;existe.</span></dd></dl>
- <dl><dt><a name="-usuario_existe"><strong>usuario_existe</strong></a>(nombre)</dt><dd><span class="code">Verifica&nbsp;si&nbsp;un&nbsp;usuario&nbsp;ya&nbsp;existe.</span></dd></dl>
- <dl><dt><a name="-verificar_respuesta_secreta"><strong>verificar_respuesta_secreta</strong></a>(nombre, respuesta)</dt><dd><span class="code">Verifica&nbsp;si&nbsp;la&nbsp;respuesta&nbsp;secreta&nbsp;coincide&nbsp;con&nbsp;la&nbsp;registrada.</span></dd></dl>
- <dl><dt><a name="-verificar_usuario"><strong>verificar_usuario</strong></a>(nombre, clave)</dt><dd><span class="code">Verifica&nbsp;si&nbsp;el&nbsp;usuario&nbsp;y&nbsp;contraseña&nbsp;coinciden&nbsp;en&nbsp;el&nbsp;sistema.</span></dd></dl>
->>>>>>> 7bd8bf5674ae67b1e45373b0b5fea840cc61ce72
 </td></tr></table><p>
 <table class="section">
 <tr class="decor data-decor heading-text">
 <td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
     
 <tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
-<<<<<<< HEAD
 <td class="singlecolumn"><strong>ADMIN_CLAVE_INICIAL</strong> = 'Admin123'<br>
 <strong>ADMIN_PREGUNTA</strong> = '¿Cuál es el nombre de tu primera mascota?'<br>
 <strong>ADMIN_USUARIO</strong> = 'administrator'<br>
@@ -125,8 +95,4 @@ si&nbsp;venimos&nbsp;de&nbsp;una&nbsp;versión&nbsp;anterior&nbsp;de&nbsp;la&nbs
 <strong>ROLES_VALIDOS</strong> = ('admin', 'completo', 'presupuesto', 'ahorro')<br>
 <strong>ROL_POR_DEFECTO</strong> = 'completo'<br>
 <strong>nombre_bd</strong> = r'c:\Users\Datas\OneDrive\Escritorio\cs2 backup\UA - PDFS\sogue\soguebase.db'</td></tr></table>
-=======
-<td class="singlecolumn"><strong>TIMEOUT_BD</strong> = 10<br>
-<strong>nombre_bd</strong> = 'soguebase.db'</td></tr></table>
->>>>>>> 7bd8bf5674ae67b1e45373b0b5fea840cc61ce72
 </body></html>
