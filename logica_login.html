@@ -8,8 +8,18 @@
 <table class="heading">
 <tr class="heading-text decor">
 <td class="title">&nbsp;<br><strong class="title">logica_login</strong></td>
+<<<<<<< HEAD
+<td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cdatas%5Conedrive%5Cescritorio%5Ccs2%20backup%5Cua%20-%20pdfs%5Csogue%5Clogica_login.py">c:\users\datas\onedrive\escritorio\cs2 backup\ua - pdfs\sogue\logica_login.py</a></td></tr></table>
+    <p><span class="code">lógica&nbsp;del&nbsp;login&nbsp;de&nbsp;sogueapp:&nbsp;usuarios,&nbsp;roles,&nbsp;contraseñas&nbsp;y&nbsp;base&nbsp;de&nbsp;datos.<br>
+&nbsp;<br>
+este&nbsp;módulo&nbsp;no&nbsp;usa&nbsp;la&nbsp;interfaz&nbsp;gráfica,&nbsp;asi&nbsp;que&nbsp;se&nbsp;puede&nbsp;probar&nbsp;solo<br>
+(ver&nbsp;test_login.py).&nbsp;la&nbsp;interfaz&nbsp;(interfaz_login.py)&nbsp;llama&nbsp;a&nbsp;estas&nbsp;funciones.<br>
+&nbsp;<br>
+roles&nbsp;validos:&nbsp;admin,&nbsp;completo,&nbsp;presupuesto,&nbsp;ahorro.</span></p>
+=======
 <td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cdatas%5Conedrive%5Cdocumentos%5Cborrador_sogue%5Clogica_login.py">c:\users\datas\onedrive\documentos\borrador_sogue\logica_login.py</a></td></tr></table>
     <p></p>
+>>>>>>> 7bd8bf5674ae67b1e45373b0b5fea840cc61ce72
 <p>
 <table class="section">
 <tr class="decor pkg-content-decor heading-text">
@@ -17,14 +27,70 @@
     
 <tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
 <td class="singlecolumn"><table><tr><td class="multicolumn"><a href="hashlib.html">hashlib</a><br>
+<<<<<<< HEAD
+<a href="hmac.html">hmac</a><br>
+<a href="io.html">io</a><br>
+</td><td class="multicolumn"><a href="math.html">math</a><br>
+<a href="os.html">os</a><br>
+<a href="re.html">re</a><br>
+</td><td class="multicolumn"><a href="secrets.html">secrets</a><br>
+<a href="sqlite3.html">sqlite3</a><br>
+<a href="sys.html">sys</a><br>
+=======
 </td><td class="multicolumn"><a href="re.html">re</a><br>
 </td><td class="multicolumn"><a href="sqlite3.html">sqlite3</a><br>
+>>>>>>> 7bd8bf5674ae67b1e45373b0b5fea840cc61ce72
 </td><td class="multicolumn"></td></tr></table></td></tr></table><p>
 <table class="section">
 <tr class="decor functions-decor heading-text">
 <td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
     
 <tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<<<<<<< HEAD
+<td class="singlecolumn"><dl><dt><a name="-cambiar_clave"><strong>cambiar_clave</strong></a>(usuario, nueva_clave)</dt><dd><span class="code">cambia&nbsp;la&nbsp;contraseña&nbsp;si&nbsp;cumple&nbsp;las&nbsp;reglas&nbsp;y&nbsp;el&nbsp;usuario&nbsp;existe.<br>
+&nbsp;<br>
+no&nbsp;comprueba&nbsp;la&nbsp;identidad:&nbsp;antes&nbsp;hay&nbsp;que&nbsp;llamar&nbsp;a&nbsp;verificar_respuesta_secreta.</span></dd></dl>
+ <dl><dt><a name="-clave_es_segura"><strong>clave_es_segura</strong></a>(clave)</dt><dd><span class="code">revisa&nbsp;las&nbsp;reglas&nbsp;de&nbsp;la&nbsp;contraseña.<br>
+&nbsp;<br>
+reglas:&nbsp;mínimo&nbsp;8&nbsp;caracteres,&nbsp;una&nbsp;mayúscula,&nbsp;una&nbsp;minúscula&nbsp;y&nbsp;un&nbsp;número.<br>
+devuelve&nbsp;``(True,&nbsp;"")``&nbsp;si&nbsp;cumple&nbsp;o&nbsp;``(False,&nbsp;motivo)``&nbsp;si&nbsp;no.</span></dd></dl>
+ <dl><dt><a name="-conectar"><strong>conectar</strong></a>()</dt><dd><span class="code">abre&nbsp;la&nbsp;conexión&nbsp;a&nbsp;la&nbsp;base&nbsp;de&nbsp;datos&nbsp;indicada&nbsp;en&nbsp;``nombre_bd``.<br>
+&nbsp;<br>
+devuelve&nbsp;una&nbsp;conexión&nbsp;sqlite3&nbsp;normal;&nbsp;quien&nbsp;la&nbsp;pide&nbsp;debe&nbsp;cerrarla.</span></dd></dl>
+ <dl><dt><a name="-convertir_monto"><strong>convertir_monto</strong></a>(texto)</dt><dd><span class="code">convierte&nbsp;lo&nbsp;escrito&nbsp;en&nbsp;un&nbsp;monto&nbsp;mayor&nbsp;a&nbsp;0,&nbsp;o&nbsp;devuelve&nbsp;none&nbsp;si&nbsp;no&nbsp;sirve.<br>
+&nbsp;<br>
+acepta&nbsp;separadores&nbsp;de&nbsp;miles:&nbsp;1500000,&nbsp;1.500.000&nbsp;o&nbsp;1,500,000.</span></dd></dl>
+ <dl><dt><a name="-crear_usuario"><strong>crear_usuario</strong></a>(usuario, clave, pregunta, respuesta, rol='completo')</dt><dd><span class="code">registra&nbsp;un&nbsp;usuario&nbsp;nuevo.<br>
+&nbsp;<br>
+devuelve&nbsp;false&nbsp;si&nbsp;faltan&nbsp;datos,&nbsp;el&nbsp;rol&nbsp;no&nbsp;existe,&nbsp;la&nbsp;clave&nbsp;es&nbsp;insegura<br>
+o&nbsp;el&nbsp;usuario&nbsp;ya&nbsp;existe.&nbsp;la&nbsp;interfaz&nbsp;nunca&nbsp;ofrece&nbsp;el&nbsp;rol&nbsp;admin&nbsp;al&nbsp;registrarse.</span></dd></dl>
+ <dl><dt><a name="-generar_documentacion"><strong>generar_documentacion</strong></a>(carpeta=None)</dt><dd><span class="code">crea&nbsp;logica_login.html&nbsp;con&nbsp;pydoc&nbsp;a&nbsp;partir&nbsp;de&nbsp;los&nbsp;docstrings.<br>
+&nbsp;<br>
+se&nbsp;guarda&nbsp;en&nbsp;la&nbsp;carpeta&nbsp;de&nbsp;este&nbsp;archivo&nbsp;(o&nbsp;en&nbsp;la&nbsp;que&nbsp;se&nbsp;indique).<br>
+devuelve&nbsp;la&nbsp;ruta&nbsp;del&nbsp;html&nbsp;creado.</span></dd></dl>
+ <dl><dt><a name="-generar_presupuesto"><strong>generar_presupuesto</strong></a>(usuario, ingreso)</dt><dd><span class="code">arma&nbsp;el&nbsp;presupuesto&nbsp;50/30/20&nbsp;del&nbsp;usuario&nbsp;y&nbsp;reemplaza&nbsp;el&nbsp;que&nbsp;tenía.<br>
+&nbsp;<br>
+borra&nbsp;solo&nbsp;las&nbsp;categorías&nbsp;y&nbsp;gastos&nbsp;de&nbsp;ese&nbsp;usuario.&nbsp;devuelve&nbsp;false&nbsp;si&nbsp;el<br>
+ingreso&nbsp;no&nbsp;es&nbsp;un&nbsp;monto&nbsp;válido&nbsp;o&nbsp;el&nbsp;usuario&nbsp;no&nbsp;existe&nbsp;(y&nbsp;no&nbsp;borra&nbsp;nada).</span></dd></dl>
+ <dl><dt><a name="-hashear"><strong>hashear</strong></a>(texto)</dt><dd><span class="code">devuelve&nbsp;el&nbsp;hash&nbsp;con&nbsp;sal&nbsp;de&nbsp;un&nbsp;texto:&nbsp;``pbkdf2_sha256$iter$sal$hash``.</span></dd></dl>
+ <dl><dt><a name="-inicializar_db"><strong>inicializar_db</strong></a>()</dt><dd><span class="code">crea&nbsp;las&nbsp;tablas&nbsp;si&nbsp;faltan,&nbsp;actualiza&nbsp;bases&nbsp;viejas&nbsp;y&nbsp;crea&nbsp;el&nbsp;admin&nbsp;inicial.<br>
+&nbsp;<br>
+se&nbsp;puede&nbsp;llamar&nbsp;en&nbsp;cada&nbsp;arranque:&nbsp;no&nbsp;borra&nbsp;ni&nbsp;duplica&nbsp;nada.</span></dd></dl>
+ <dl><dt><a name="-obtener_categorias"><strong>obtener_categorias</strong></a>(usuario)</dt><dd><span class="code">devuelve&nbsp;las&nbsp;categorías&nbsp;del&nbsp;usuario&nbsp;como&nbsp;``(nombre,&nbsp;presupuesto,&nbsp;gastado)``.<br>
+&nbsp;<br>
+solo&nbsp;trae&nbsp;las&nbsp;de&nbsp;ese&nbsp;usuario;&nbsp;si&nbsp;no&nbsp;existe&nbsp;o&nbsp;no&nbsp;tiene&nbsp;presupuesto,&nbsp;la&nbsp;lista&nbsp;va&nbsp;vacía.</span></dd></dl>
+ <dl><dt><a name="-obtener_pregunta_secreta"><strong>obtener_pregunta_secreta</strong></a>(usuario)</dt><dd><span class="code">devuelve&nbsp;la&nbsp;pregunta&nbsp;secreta&nbsp;del&nbsp;usuario,&nbsp;o&nbsp;none&nbsp;si&nbsp;no&nbsp;existe.</span></dd></dl>
+ <dl><dt><a name="-obtener_rol_usuario"><strong>obtener_rol_usuario</strong></a>(usuario)</dt><dd><span class="code">devuelve&nbsp;el&nbsp;rol&nbsp;del&nbsp;usuario,&nbsp;o&nbsp;none&nbsp;si&nbsp;no&nbsp;existe.</span></dd></dl>
+ <dl><dt><a name="-obtener_todos_los_usuarios"><strong>obtener_todos_los_usuarios</strong></a>()</dt><dd><span class="code">devuelve&nbsp;la&nbsp;lista&nbsp;``(id,&nbsp;usuario,&nbsp;rol)``&nbsp;de&nbsp;todos&nbsp;los&nbsp;usuarios&nbsp;(panel&nbsp;admin).</span></dd></dl>
+ <dl><dt><a name="-usuario_existe"><strong>usuario_existe</strong></a>(usuario)</dt><dd><span class="code">true&nbsp;si&nbsp;ya&nbsp;hay&nbsp;un&nbsp;usuario&nbsp;con&nbsp;ese&nbsp;nombre&nbsp;(sin&nbsp;distinguir&nbsp;mayúsculas).</span></dd></dl>
+ <dl><dt><a name="-verificar_hash"><strong>verificar_hash</strong></a>(texto, almacenado)</dt><dd><span class="code">compara&nbsp;un&nbsp;texto&nbsp;con&nbsp;su&nbsp;hash&nbsp;guardado&nbsp;(formato&nbsp;nuevo&nbsp;o&nbsp;viejo).<br>
+&nbsp;<br>
+devuelve&nbsp;true&nbsp;si&nbsp;coinciden.</span></dd></dl>
+ <dl><dt><a name="-verificar_respuesta_secreta"><strong>verificar_respuesta_secreta</strong></a>(usuario, respuesta)</dt><dd><span class="code">true&nbsp;si&nbsp;la&nbsp;respuesta&nbsp;es&nbsp;correcta&nbsp;(ignora&nbsp;espacios&nbsp;y&nbsp;mayúsculas).</span></dd></dl>
+ <dl><dt><a name="-verificar_usuario"><strong>verificar_usuario</strong></a>(usuario, clave)</dt><dd><span class="code">true&nbsp;si&nbsp;el&nbsp;usuario&nbsp;existe&nbsp;y&nbsp;la&nbsp;contraseña&nbsp;es&nbsp;correcta.<br>
+&nbsp;<br>
+si&nbsp;la&nbsp;clave&nbsp;estaba&nbsp;guardada&nbsp;con&nbsp;el&nbsp;formato&nbsp;viejo,&nbsp;la&nbsp;actualiza&nbsp;al&nbsp;nuevo.</span></dd></dl>
+=======
 <td class="singlecolumn"><dl><dt><a name="-cambiar_clave"><strong>cambiar_clave</strong></a>(nombre, nueva_clave)</dt><dd><span class="code">Actualiza&nbsp;la&nbsp;contraseña&nbsp;de&nbsp;un&nbsp;usuario&nbsp;(usar&nbsp;solo&nbsp;después&nbsp;de&nbsp;verificar<br>
 la&nbsp;respuesta&nbsp;secreta).&nbsp;Retorna&nbsp;True&nbsp;si&nbsp;se&nbsp;pudo&nbsp;cambiar.</span></dd></dl>
  <dl><dt><a name="-clave_es_segura"><strong>clave_es_segura</strong></a>(clave)</dt><dd><span class="code">Revisa&nbsp;que&nbsp;la&nbsp;contraseña&nbsp;cumpla&nbsp;un&nbsp;mínimo&nbsp;de&nbsp;seguridad.<br>
@@ -41,12 +107,26 @@ si&nbsp;venimos&nbsp;de&nbsp;una&nbsp;versión&nbsp;anterior&nbsp;de&nbsp;la&nbs
  <dl><dt><a name="-usuario_existe"><strong>usuario_existe</strong></a>(nombre)</dt><dd><span class="code">Verifica&nbsp;si&nbsp;un&nbsp;usuario&nbsp;ya&nbsp;existe.</span></dd></dl>
  <dl><dt><a name="-verificar_respuesta_secreta"><strong>verificar_respuesta_secreta</strong></a>(nombre, respuesta)</dt><dd><span class="code">Verifica&nbsp;si&nbsp;la&nbsp;respuesta&nbsp;secreta&nbsp;coincide&nbsp;con&nbsp;la&nbsp;registrada.</span></dd></dl>
  <dl><dt><a name="-verificar_usuario"><strong>verificar_usuario</strong></a>(nombre, clave)</dt><dd><span class="code">Verifica&nbsp;si&nbsp;el&nbsp;usuario&nbsp;y&nbsp;contraseña&nbsp;coinciden&nbsp;en&nbsp;el&nbsp;sistema.</span></dd></dl>
+>>>>>>> 7bd8bf5674ae67b1e45373b0b5fea840cc61ce72
 </td></tr></table><p>
 <table class="section">
 <tr class="decor data-decor heading-text">
 <td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
     
 <tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<<<<<<< HEAD
+<td class="singlecolumn"><strong>ADMIN_CLAVE_INICIAL</strong> = 'Admin123'<br>
+<strong>ADMIN_PREGUNTA</strong> = '¿Cuál es el nombre de tu primera mascota?'<br>
+<strong>ADMIN_USUARIO</strong> = 'administrator'<br>
+<strong>DISTRIBUCION_50_30_20</strong> = (('Necesidades Básicas', 50), ('Deseos y Ocio', 30), ('Ahorro e Inversión', 20))<br>
+<strong>ITERACIONES</strong> = 200000<br>
+<strong>LARGO_MINIMO_CLAVE</strong> = 8<br>
+<strong>PREFIJO_HASH</strong> = 'pbkdf2_sha256'<br>
+<strong>ROLES_VALIDOS</strong> = ('admin', 'completo', 'presupuesto', 'ahorro')<br>
+<strong>ROL_POR_DEFECTO</strong> = 'completo'<br>
+<strong>nombre_bd</strong> = r'c:\Users\Datas\OneDrive\Escritorio\cs2 backup\UA - PDFS\sogue\soguebase.db'</td></tr></table>
+=======
 <td class="singlecolumn"><strong>TIMEOUT_BD</strong> = 10<br>
 <strong>nombre_bd</strong> = 'soguebase.db'</td></tr></table>
+>>>>>>> 7bd8bf5674ae67b1e45373b0b5fea840cc61ce72
 </body></html>
