@@ -1,12 +1,16 @@
 """pruebas unitarias de logica_login (ejecutar: python -m unittest -v)."""
 
+import base64
 import datetime
 import hashlib
 import os
 import sqlite3
+import struct
+import sys
 import tempfile
 import unittest
 
+import icono_sogue
 import logica_login
 
 BD_PRUEBA = "test_soguebase.db"
@@ -957,6 +961,23 @@ class PruebasLoginYRoles(unittest.TestCase):
         self.assertEqual(len(aportes), 1)
         self.assertEqual(logica_login.obtener_metas("beto")[0]["ahorrado"], 2000.0)
 
+    #carpeta de la base (programa normal y .exe de pyinstaller)
+
+    def test_carpeta_base_normal_y_empaquetada(self):
+        """normal: junto al código. con pyinstaller: junto al .exe, no en la carpeta temporal."""
+        aqui = os.path.dirname(os.path.abspath(logica_login.__file__))
+        self.assertEqual(logica_login.carpeta_base(), aqui)
+
+        carpeta_exe = os.path.abspath(os.path.join(tempfile.gettempdir(), "carpeta_del_exe"))
+        sys.frozen = True
+        sys.executable, ejecutable = os.path.join(carpeta_exe, "SogueApp.exe"), sys.executable
+        try:
+            self.assertEqual(logica_login.carpeta_base(), carpeta_exe)
+        finally:
+            sys.executable = ejecutable
+            del sys.frozen
+        self.assertEqual(logica_login.carpeta_base(), aqui)
+
     #documentación
 
     def test_generar_documentacion(self):
@@ -1017,6 +1038,61 @@ class PruebasLoginYRoles(unittest.TestCase):
         # y con la base migrada ya se pueden registrar gastos
         self.assertTrue(logica_login.registrar_gasto("veterano", "Ahorro", "cuota", 40)["ok"])
         self.assertEqual(logica_login.obtener_categorias("veterano"), [("Ahorro", 100.0, 40.0)])
+
+
+class VentanaFalsa:
+    """imita una ventana de customtkinter: anota las llamadas a iconbitmap y after."""
+
+    def __init__(self, falla=False):
+        self.iconos = []
+        self.pendientes = []
+        self.falla = falla
+
+    def iconbitmap(self, ruta):
+        if self.falla:
+            raise RuntimeError("la ventana ya no existe")
+        self.iconos.append(ruta)
+
+    def after(self, milisegundos, funcion):
+        self.pendientes.append((milisegundos, funcion))
+
+
+class PruebasIcono(unittest.TestCase):
+    """el ícono va dentro del código, así que no depende de ningún archivo extra."""
+
+    def test_icono_embebido_es_un_ico_valido(self):
+        """el base64 se decodifica a un .ico con los 7 tamaños, de 16 a 256 px."""
+        datos = base64.b64decode(icono_sogue.ICONO_BASE64)
+        reservado, tipo, cantidad = struct.unpack("<HHH", datos[:6])
+        self.assertEqual((reservado, tipo, cantidad), (0, 1, 7))
+        anchos = [datos[6 + 16 * i] or 256 for i in range(cantidad)]
+        self.assertEqual(anchos, [16, 24, 32, 48, 64, 128, 256])
+
+    def test_ruta_icono_escribe_el_archivo(self):
+        """se crea el .ico en la carpeta temporal con el contenido correcto."""
+        ruta = icono_sogue.ruta_icono()
+        self.assertTrue(os.path.exists(ruta))
+        with open(ruta, "rb") as archivo:
+            self.assertEqual(archivo.read(), base64.b64decode(icono_sogue.ICONO_BASE64))
+
+    def test_poner_icono_lo_repite_para_ganarle_a_customtkinter(self):
+        """se pone al abrir y se repite a los 250 y 700 ms."""
+        ventana = VentanaFalsa()
+        icono_sogue.poner_icono(ventana)
+        self.assertEqual([m for m, _ in ventana.pendientes], [250, 700])
+        for _, funcion in ventana.pendientes:
+            funcion()
+        self.assertEqual(len(ventana.iconos), 3)
+        self.assertEqual(len(set(ventana.iconos)), 1)
+        self.assertTrue(ventana.iconos[0].endswith(".ico"))
+
+    def test_poner_icono_no_rompe_si_la_ventana_se_cerro(self):
+        """si la ventana ya no existe, no hay error."""
+        ventana = VentanaFalsa(falla=True)
+        icono_sogue.poner_icono(ventana)
+        for _, funcion in ventana.pendientes:
+            funcion()
+        self.assertEqual(ventana.iconos, [])
 
 
 if __name__ == "__main__":

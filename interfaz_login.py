@@ -3,6 +3,7 @@ from datetime import datetime
 from tkinter import messagebox
 import random
 import logica_login
+from icono_sogue import poner_icono
 
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
@@ -50,6 +51,7 @@ def abrir_app_principal():
     ventana_principal = ctk.CTk()
     ventana_principal.geometry("1040x720")
     ventana_principal.title(f"SogueApp - Panel Principal [{usuario_actual} | Rol: {rol_actual.upper()}]")
+    poner_icono(ventana_principal)
 
     # Barra lateral elegante
     barra_lateral = ctk.CTkFrame(ventana_principal, width=220, corner_radius=0)
@@ -83,6 +85,7 @@ def abrir_app_principal():
         dialogo.title(titulo)
         dialogo.geometry(f"400x{170 + 70 * len(campos)}")
         dialogo.transient(ventana_principal)
+        poner_icono(dialogo)
 
         ctk.CTkLabel(dialogo, text=titulo, font=("Arial", 16, "bold")).pack(pady=(15, 8))
         lectores = []
@@ -336,6 +339,7 @@ def abrir_app_principal():
         dialogo.title("Presupuesto personalizado")
         dialogo.geometry("470x580")
         dialogo.transient(ventana_principal)
+        poner_icono(dialogo)
 
         ctk.CTkLabel(dialogo, text="Distribuí tu ingreso en categorías (los porcentajes deben sumar 100%)",
                      font=("Arial", 13, "bold"), wraplength=420).pack(pady=(15, 8))
@@ -808,6 +812,7 @@ def crear_pantalla_login():
     ventana = ctk.CTk()
     ventana.geometry("440x660")
     ventana.title("SogueApp - Login")
+    poner_icono(ventana)
 
     marco_principal = ctk.CTkFrame(ventana)
     marco_principal.pack(fill="both", expand=True, padx=20, pady=20)

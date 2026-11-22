@@ -25,8 +25,19 @@ import sys
 from contextlib import contextmanager, redirect_stdout
 from datetime import datetime
 
-# archivo de la base, junto a este módulo; las pruebas lo cambian por uno temporal
-nombre_bd = os.path.join(os.path.dirname(os.path.abspath(__file__)), "soguebase.db")
+def carpeta_base():
+    """carpeta donde se guarda la base de datos.
+
+    con el programa normal es la carpeta de este archivo. si está empaquetado
+    con pyinstaller (.exe) es la carpeta del .exe: con ``--onefile`` el código
+    corre desde una carpeta temporal que se borra al cerrar, y ahí se perdería la base.
+    """
+    if getattr(sys, "frozen", False):
+        return os.path.dirname(os.path.abspath(sys.executable))
+    return os.path.dirname(os.path.abspath(__file__))
+
+# archivo de la base, junto al programa; las pruebas lo cambian por uno temporal
+nombre_bd = os.path.join(carpeta_base(), "soguebase.db")
 
 ROLES_VALIDOS = ("admin", "completo", "presupuesto", "ahorro")
 ROL_POR_DEFECTO = "completo"
